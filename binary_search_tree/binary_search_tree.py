@@ -97,17 +97,61 @@ class BinarySearchTree:
     # Print all the values in order from low to high
     # Hint:  Use a recursive, depth first traversal
     def in_order_print(self, node):
-        pass
-
+        
+        if node:
+            node.in_order_print(node.left)
+            
+            print(node.value)
+            
+            node.in_order_print(node.right)
+       
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
-        pass
+       # create an empty queue
+       q = Queue()
+       
+        # add the starting node to the queue
+       q.enqueue(node)
+    
+        # iterate over the queue
+       while q.len() > 0:
+            # set the current_node to the first item in the q
+           current_node = q.dequeue()
+            # then print the current value
+           print(current_node.value)
+            # if the current node has a left child
+                # call enqueue on the current left
+           if current_node.left:
+               q.enqueue(current_node.left)
+            # if the current node has a right child
+                # call enqueue on the current right
+           if current_node.right:
+               q.enqueue(current_node.right)
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        pass
+        # create an empty stack
+        s = Stack()
+        
+        # add the starting node to the stack
+        s.push(node)
+
+        # iterate over the stack
+        while s.len() > 0:
+            # set the current_node to the first item in the stack
+            current_node = s.pop()
+            # then print the current value
+            print(current_node.value)
+            # if the current node has a left child
+                # call push on the current left
+            if current_node.left:
+                s.push(current_node.left)
+            # if the current node has a right child
+                # call push on the current right
+            if current_node.right:
+                s.push(current_node.right)
 
     # STRETCH Goals -------------------------
     # Note: Research may be required
